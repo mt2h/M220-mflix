@@ -29,7 +29,7 @@ describe("User Preferences", () => {
     expect(result).toEqual(expected)
   })
 
-  test("Null preferences should be valid", async () => {
+  test("Null preferences should be valid", async () => {    
     await UsersDAO.addUser(testUser)
     const preferences = null
     await UsersDAO.updatePreferences(testUser.email, preferences)
@@ -38,7 +38,7 @@ describe("User Preferences", () => {
     expect(userData.preferences).toEqual({})
   })
 
-  test("Valid preferences are reflected in DB", async () => {
+  test("Valid preferences are reflected in DB", async () => {    
     await UsersDAO.addUser(testUser)
 
     // first set of preferences
@@ -55,7 +55,7 @@ describe("User Preferences", () => {
     expect(updateResult.matchedCount).toBe(1)
     expect(updateResult.modifiedCount).toBe(1)
 
-    const userData = UsersDAO.getUser(testUser.email)
+    const userData = await UsersDAO.getUser(testUser.email)
     expect(userData.preferences).not.toBeNull()
 
     // second set of preferences

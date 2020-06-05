@@ -8,7 +8,8 @@
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
     "changestream:update": "node test/lessons/change-updates.js",
-    "changestream:insert": "node test/lessons/change-insert.js"
+    "changestream:insert": "node test/lessons/change-insert.js",
+    "debug": "node --debug-brk --inspect ./node_modules/.bin/jest -i"
   },
   "husky": {
     "hooks": {

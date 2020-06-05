@@ -1,7 +1,7 @@
 import UsersDAO from "../src/dao/usersDAO"
 const testUser = {
-  name: "Magical Mr. Mistoffelees",
   email: "magicz@cats.com",
+  name: "Magical Mr. Mistoffelees",  
   password: "somehashedpw",
 }
 
@@ -33,9 +33,12 @@ describe("User Management", () => {
 
     // we should be able to get the user
     const user = await UsersDAO.getUser(testUser.email)
+
     // for comparison, we delete the _id key returned from Mongo
     delete user._id
-    expect(user).toEqual(testUser)
+    expect(user.name).toEqual(testUser.name)
+    expect(user.email).toEqual(testUser.email)    
+    expect(user.password).toEqual(testUser.password)
   })
 
   test("it returns an error when trying to register duplicate user", async () => {
@@ -50,7 +53,8 @@ describe("User Management", () => {
     expect(actual.success).toBeTruthy()
     const sessionResult = await UsersDAO.getUserSession(testUser.email)
     delete sessionResult._id
-    expect(sessionResult).toEqual(sessionUser)
+    expect(sessionResult.user_id).toEqual(sessionUser.user_id)
+    expect(sessionResult.jwt).toEqual(sessionUser.jwt)
   })
 
   test("it allows a user to logout", async () => {
