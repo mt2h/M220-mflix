@@ -335,10 +335,16 @@ Each ticket will contain the exact command to run that ticket's specific unit
 tests. You can run these commands from anywhere in the **mflix-js** project.
 
 
+## Coverage
 
-
-## Sonar Report
+# Sonar Report
 
 ```bash
 npm i -D jest-sonar-reporter
+```
+
+Plugin
+
+```bash
+node sonar.js
 ```
