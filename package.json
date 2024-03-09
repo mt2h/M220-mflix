@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L ./index.js",
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --detecOpenHandles --coverage --coverageDirectory=output/coverage/jest",
     "test:watch": "jest --passWithNoTests --watch",
     "changestream:update": "node test/lessons/change-updates.js",
     "changestream:insert": "node test/lessons/change-insert.js",
